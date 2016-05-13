@@ -55,10 +55,11 @@ story : Post -> Html Msg
 story content = 
   div [] 
   [
-  h1 [] [ 
-    text 
-        <| toString content.title 
+    h1 [] [ 
+        text 
+            <| toString content.title 
     ]
   , text 
-    <| toString content.body
+        <| toString content.body
   ]
+  
