@@ -3,8 +3,14 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.App as Html
 import Html.Events exposing (onClick)
+import String exposing (..)
 import Markdown exposing (toHtml)
-import Blog.Home
+import Style
+
+import Posts.Home
+import Posts.Elm
+import Posts.Blog
+import Posts.BBHH
 
 main : Program Never
 main = 
@@ -14,18 +20,34 @@ main =
 
 type alias Content = String
 
-type alias Post = { title : String, body : List Content }
+type alias Post =
+  { title : String
+  , image : String
+  , body : List Content
+  }
 
 type alias Model = 
-  { menu : List Post, content : Post }
+  { menu : List Post
+  , content : Post
+  }
     
 posts : List Post
 posts = 
-  [ Blog.Home.post ]
+  -- [ Posts.Home.post
+  -- , Posts.Elm.post
+  [ Posts.Blog.post
+  , Posts.BBHH.post
+  ]
 
 home : Model
 home =
-  { menu = posts, content = Blog.Home.post }
+  let
+    blank = { title = "", image = "", body = [ "" ] }
+    post = List.head posts
+  in
+    { menu = posts
+    , content = Maybe.withDefault blank post
+    }
 
 -- UPDATE --
     
@@ -39,47 +61,59 @@ update msg model =
 
 type Msg = ViewPost Post
 
-(=>) = (,)
-
-site : List (String, String)
-site =
-    [ "height" => "100%"
-    , "font-size" => "1.5em"
-    ]
-
-font : List (String, String)
-font =
-    [ "font-family" => "futura, sans-serif"
-    , "color" => "rgb(42, 42, 42)"
-    , "font-size" => "1.5em"
-    ]
-
 view : Model -> Html Msg
 view model =
-  div [ style (site ++ font) ] [ nav model.menu, story model.content ]
-      
-nav_link : Post -> Html Msg
-nav_link post = 
-  a [ href "#", onClick (ViewPost post) ] [ text post.title ]
-      
-sidebar : List (String, String)
-sidebar =
-    [ "float" => "left"
-    , "background-color" => "#DDD"
-    , "height" => "100%"
-    , "width" => "250px"
+  div [ style Style.site ]
+    [ nav model.menu
+    , story model.content
     ]
 
 nav : List Post -> Html Msg
 nav posts = 
-  div [ style sidebar ] ( List.map nav_link posts )
+  let
+    header =
+      div [ style Style.header ]
+        [ img [ style Style.header_img, src "me.png" ] []
+        , h1 [ style Style.header_title ]
+          [ a
+            [ style Style.link
+            , href "#"
+            , onClick (ViewPost home.content)
+            ]
+            [ text "TAYSAR"
+            ]
+          ]
+        , p [ style Style.header_subtitle ] [ text "essays and stories" ]
+        ]
+    link post = 
+      li [ style Style.sidebar_link ]
+        [ a 
+          [ style Style.link
+          , href "#"
+          , onClick (ViewPost post)
+          ]
+          [ text post.title
+          ]
+        ]
+    links =
+      List.map link posts
+  in
+    div [ style Style.sidebar ]
+      [ header
+      , ul [ style Style.sidebar_links ] links
+      ]
          
+-- TODO: use case statement to parse different *Types* of paragraphs
 story : Post -> Html Msg
 story content = 
-  div [ style [ "width" => "250px", "float" => "left" ] ] 
-    [ h1 []
-      [ text content.title 
-      ]
-    , div [] (List.map (Markdown.toHtml []) content.body)
-    ]
+  let
+    image = if (String.isEmpty content.image) then [] else [ img [ style Style.story_image, src content.image ] [] ]
+    title = h2 [ style Style.story_title ] [ text content.title ]
+    body = div [ style Style.story_body ] (List.map (Markdown.toHtml []) content.body)
+  in
+    div [ style Style.story ] 
+      <| image ++ [ body ]
+        -- [ title
+        -- , body
+        -- ]
   

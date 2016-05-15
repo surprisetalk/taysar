@@ -1,9 +1,11 @@
 
-module Blog.Home exposing (post)
+module Posts.Home exposing (post)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
+-- import Html.Lazy exposing (lazy)
 
+-- TODO: use Html.Lazy ?
 -- post =
 --     { 
 --       title = "Welcome" 
@@ -18,11 +20,9 @@ import Html.Attributes exposing (..)
 
 post =
   {
-    title = "Welcome"
+    title = "Hello"
+    , image = "http://ellenpronk.com/wp-content/uploads/2015/06/bjork.jpg"
     , body =
-    [
-      "i am"
-    , "the one"
-    , "who knocks"
+    [ "Let there be sadness."
     ]
   }
