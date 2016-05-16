@@ -23,6 +23,9 @@ article > section ul {
     line-height: 2;
     list-style: circle;
 }
+article > section > ul > li {
+    margin: 15px 0;
+}
 article > section ul li li {
     font-family: 'Noto serif', serif;
     font-size: 0.85em;
