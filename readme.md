@@ -6,6 +6,7 @@
 
 - [ ] make a static file generator (in racket)?
 - [ ] make simple templates with handlebars?
+- [ ] body mods page
 
 
 ## POSTS
@@ -112,6 +113,26 @@
 - [ ] calorie-restrictive diets
 - [ ] on soylent
 - [ ] on uniforms
+- [ ] ellen white
+- [ ] the art of fugue
+- [ ] history of classical music
+- [ ] flute spell
+- [ ] music production rules-of-thumb
+- [ ] godel escher bach
+- [ ] tao te ching
+- [ ] i ching
+- [ ] monument valley
+- [ ] wim hoff research
+- [ ] how to cut hair
+- [ ] baking bread
+- [ ] on being superhuman
+- [ ] wine
+- [ ] whiskey
+- [ ] hppd
+- [ ] good logos have no text
+- [ ] how to make 8-bit art
+- [ ] poetry for pessimists
+- [ ] appolo's insurrection
 
 
 ## AVENUES
@@ -122,3 +143,8 @@
 - [ ] project diaries
 - [ ] more rants
 - [ ] more cool things
+- [ ] longer stories under version control
+- [ ] saved posts from reddit
+- [ ] podcasts & podcasts reviews
+- [ ] videos
+
