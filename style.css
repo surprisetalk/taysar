@@ -1,12 +1,21 @@
 
 /* MINIMAL */
 html {
-    padding: 20px 20px 50px;
-    background-color: #EEE;
+    background-color: #F6F6F6;
     color: #444;
     max-width: 550px;
-    margin: 0 auto;
     font-family: 'Noto sans', sans-serif;
+}
+@media (max-width: 550px) {
+    html {
+	margin: 0 auto;
+	padding: 10px 20px 250px;
+    }
+}
+@media (min-width: 550px) {
+    html {
+	padding: 20px 0 250px 50px;
+    }
 }
 p, li {
     font-family: 'Noto serif', serif;
@@ -18,21 +27,40 @@ a {
     color: #29AB87;
     text-decoration: none;
 }
+header h1 {
+    letter-spacing: 0.05em;
+}
+article h4 {
+    margin-top: 50px;
+}
 article > section ul {
-    padding-left: 15px;
+    padding-left: 0;
     line-height: 2;
-    list-style: circle;
+    list-style: none;
 }
 article > section > ul > li {
-    margin: 15px 0;
+    margin: 25px 0;
 }
 article > section ul li li {
     font-family: 'Noto serif', serif;
     font-size: 0.85em;
+    margin-left: 25px;
     list-style: circle;
+    color: #888;
 }
 article > section p {
     font-size: 1.15em;
+    line-height: 1.5;
+}
+article img {
+    width: 100%;
+    margin: 25px 0;
+}
+article .caption {
+    margin: -10px 0 25px;
+    font-style: italic;
+    color: #666;
+    font-size: 0.9em;
     line-height: 1.5;
 }
 
