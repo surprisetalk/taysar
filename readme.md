@@ -134,7 +134,18 @@
 - [ ] poetry for pessimists
 - [ ] appolo's insurrection
 - [ ] github: all the things!
-
+- [ ] type theory in 10 minutes
+- [ ] one punch man
+- [ ] fountain pens
+- [ ] the brilliance of mass drop
+- [ ] latent vs explicit semantic analysis
+- [ ] home labs
+- [ ] free-will is a matter of scope
+- [ ] long live plain text
+- [ ] notebooks
+- [ ] obsession
+- [ ] on basic income
+- [ ] the austrian school of economics
 
 ## AVENUES
 
@@ -148,4 +159,5 @@
 - [ ] saved posts from reddit
 - [ ] podcasts & podcasts reviews
 - [ ] videos
+- [ ] translate white papers for laypersons
 
