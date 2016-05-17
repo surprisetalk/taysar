@@ -133,6 +133,7 @@
 - [ ] how to make 8-bit art
 - [ ] poetry for pessimists
 - [ ] appolo's insurrection
+- [ ] github: all the things!
 
 
 ## AVENUES
