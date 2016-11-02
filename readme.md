@@ -1,12 +1,18 @@
 
 # TAYSAR
 
-
 ## TODOS
 
 - [ ] make a static file generator (in racket)?
 - [ ] make simple templates with handlebars?
 - [ ] body mods page
+- [ ] favorites
+    - [ ] les mis
+    - [ ] deloused
+    - [ ] foundation
+    - [ ] one punch man
+    - [ ] better off ted
+    - [ ] gits
 
 
 ## POSTS
@@ -22,6 +28,7 @@
 - [ ] the hackers' guide to chemistry, part 0: intrudocution
 - [ ] material science study
 - [ ] manufacturing study
+- [ ] harmonica + blog post
 - [ ] what i really learned from my cs degree
 - [ ] where is nico?
 - [ ] irc study
@@ -160,4 +167,11 @@
 - [ ] podcasts & podcasts reviews
 - [ ] videos
 - [ ] translate white papers for laypersons
+- [ ] weekly "creature feature" videos. cool stuff in math/tech/art/etc
+- [ ] start ONE WRITING A DAY -- can be stupid, but need to publish / revise SOMETHING
+- [ ] start throwing stuff into ~/create/write or ~/create/writing ?
+- [ ] Iteratively write essay prompts, write notes on writing, compile notes in an essay on learning to write
+- [ ] the taysar course: lists of videos, essays, podcasts, pictures, etc. everyone should experience
+- [ ] taysar skilltrees / microcourses
+
 
