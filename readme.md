@@ -3,7 +3,26 @@
 
 ## TODOS
 
+- [ ] reorganize
+  - [ ] videos
+  - [ ] writing
+	- [ ] essays
+	- [ ] stories
+  - [ ] music
+  - [ ] software
+  - [ ] hardware
+  - [ ] photos
+  - [ ] studies
+  - [ ] else
+	- [ ] hello
+	- [ ] contact
+	- [ ] favorites
+- [ ] static files + elm
+  - [ ] qs charts
+	- [ ] github commits
+  - [ ] interactive stuff by field
 - [ ] make a static file generator (in racket)?
+  - [ ] from stories/essays repos
 - [ ] make simple templates with handlebars?
 - [ ] body mods page
 - [ ] favorites
