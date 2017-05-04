@@ -6,7 +6,7 @@
 /* Body */
 html {
   font-size: 62.5%;
-  font-family: 'Merriweather', serif; }
+  font-family: 'Merriweather', 'Lora', serif; }
 
 body {
   font-size: 1.8rem;
@@ -83,6 +83,9 @@ img {
   max-width: 100%; }
 
 /* Pre and Code */
+pre, code {
+    font-family: 'Fira Mono', monospace; }
+
 pre {
   background-color: #f1f1f1;
   display: block;
