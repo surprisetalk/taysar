@@ -17,7 +17,9 @@ import Html.Events exposing (..)
 import Html.Lazy exposing (..)
 
 import Json.Encode as E
-import Json.Decode as D
+import Json.Decode as D exposing (Decoder)
+
+import Dict exposing (Dict)
 
 import Http exposing (..)
 
@@ -36,17 +38,37 @@ type WebResult x
   | Failure Http.Error
   | Success x
 
+type alias Path
+  = String
+  
+type alias Name
+  = String
+
+type alias Link
+  = String
+
+type alias Category
+  = { name : Name
+    , path : Path
+    }
+
+type alias Content
+  = { name : Name
+    , path : Path
+    , link : Link
+    }
+
 type Page
   = NotFound
   | Index
-  | Category (Result Http.Error (List (String, String)))
-  | Markdown String
+  | Contents Path (Result Http.Error (Dict Path Content))
+  | Markdown Path String
 
-type alias Model =
-  { key        : Nav.Key
-  , categories : Result Http.Error (List String)
-  , page       : WebResult Page
-  }
+type alias Model
+  = { key        : Nav.Key
+    , categories : Result Http.Error (Dict Path Category)
+    , page       : WebResult Page
+    }
 
 
 ---- INIT ----------------------------------------------------------------------
@@ -55,27 +77,30 @@ init : () -> Url -> Key -> ( Model, Cmd Msg )
 init _ url key =
   let ( page, cmd ) = goTo url
   in  ( { key        = key
-        , categories = Ok []
+        , categories = Ok Dict.empty
         , page       = page
         }
       , Cmd.batch
         [ cmd
         , Http.send LoadGithubCategories
-          <| Http.get "https://api.github.com/repos/surprisetalk/essays/contents" githubIndexDecoder
+          <| Http.get "https://api.github.com/repos/surprisetalk/writings/contents" githubIndexDecoder
         ]
       )
 
+githubIndexDecoder : Decoder (Dict Path Category)
 githubIndexDecoder
-  = D.map (List.filterMap identity)
+  = D.map Dict.fromList
+    <| D.map (List.filterMap identity)
     <| D.list
-    <| D.map2
-       (\ name typ ->
+    <| D.map3
+       (\ typ name path ->
           case typ of
-            "dir" -> Just name
+            "dir" -> Just (path, Category name path)
             _     -> Nothing
        )
-       ( D.field "name" D.string )
        ( D.field "type" D.string )
+       ( D.field "name" D.string )
+       ( D.field "path" D.string )
 
 ---- MSG -----------------------------------------------------------------------
 
@@ -83,9 +108,9 @@ type Msg
   = NoOp
   | GoTo Url
   | ClickedLink UrlRequest
-  | LoadGithubCategories (Result Http.Error (List         String ))
-  | LoadGithubContent    (Result Http.Error               String  )
-  | LoadGithubCategory   (Result Http.Error (List (String,String)))
+  | LoadGithubCategories    (Result Http.Error (Dict Path Category))
+  | LoadGithubCategory Path (Result Http.Error (Dict Path Content ))
+  | LoadGithubContent  Path (Result Http.Error            String   )
 
 
 
@@ -128,18 +153,18 @@ update msg model
             , Nav.load url
             )
 
-      LoadGithubCategory category ->
-        ( { model | page = Success (Category category)
+      LoadGithubCategory categoryPath contents ->
+        ( { model | page = Success (Contents categoryPath contents)
           }
         , Cmd.none
         )
 
-      LoadGithubContent httpResponse ->
+      LoadGithubContent categoryPath httpResponse ->
         ( { model
             | page
               = case httpResponse of
                   Err error   -> Failure error
-                  Ok  content -> Success (Markdown content)
+                  Ok  body    -> Success (Markdown categoryPath body)
           }
         , Cmd.none
         )
@@ -159,22 +184,22 @@ goTo url
         ( Success Index
         , Cmd.none
         )
-      Just [ cat ] ->
+      Just [ categoryPath ] ->
         ( Loading
-        , Http.send LoadGithubCategory
+        , Http.send (LoadGithubCategory categoryPath)
           <| Http.get
              ( crossOrigin "https://api.github.com"
-               [ "repos", "surprisetalk", "essays", "contents", cat ]
+               [ "repos", "surprisetalk", "writings", "contents", categoryPath ]
                []
              )
              githubCategoryDecoder
         )
-      Just [ cat, pagelet ] ->
+      Just [ categoryPath, contentPath ] ->
         ( Loading      
-        , Http.send LoadGithubContent
+        , Http.send (LoadGithubContent categoryPath)
           <| Http.getString
              ( crossOrigin "https://raw.githubusercontent.com"
-               [ "surprisetalk", "essays", "master", cat, pagelet ]
+               [ "surprisetalk", "writings", "master", categoryPath, contentPath ]
                []
              )
         )
@@ -183,18 +208,41 @@ goTo url
         , Cmd.none
         )
 
+githubCategoryDecoder : Decoder (Dict Path Content)
 githubCategoryDecoder
-  = D.map (List.filterMap identity)
+  = D.map Dict.fromList
+    <| D.map (List.filterMap identity)
     <| D.list
-    <| D.map3
-       (\ name path typ ->
+    <| D.map4
+       (\ typ name path link ->
           case typ of
-            "file" -> Just (name, path)
+            "file" -> Just (path, Content name path link)
             _      -> Nothing
        )
-       ( D.field "name" D.string )
-       ( D.field "path" D.string )
-       ( D.field "type" D.string )
+       ( D.field "type"                   D.string )
+       ( D.field "name"                   D.string )
+       ( D.field "path"                   D.string )
+       ( D.field "download_url" downloadUrlDecoder )
+
+downloadUrlDecoder : Decoder String
+downloadUrlDecoder
+  = let parseDownloadUrl
+          = UrlP.parse
+         <| UrlP.map (\categoryPath contentPath -> absolute [ categoryPath, contentPath ] [])
+         <| downloadUrlParser
+        downloadUrlParser
+          = UrlP.s "surprisetalk"
+          </> UrlP.s "writings"
+          </> UrlP.s "master"
+          </> UrlP.string
+          </> UrlP.string
+     in D.andThen
+        (\ downloadUrl ->
+           case Maybe.andThen parseDownloadUrl (Url.fromString downloadUrl) of
+             Just url -> D.succeed url
+             Nothing  -> D.fail ("Couldn't parse '" ++ downloadUrl ++ "' into a URL.")
+        )
+     <| D.string
 
 
 ---- SUBSCRIPTIONS -------------------------------------------------------------
@@ -245,15 +293,16 @@ taysar model
         Ok categories ->
           ul []
           <| List.map
-             (\ c ->
+             (\ {name,path} ->
                 li []
-                [ a [ href (absolute [ c ] [])
+                [ a [ href (absolute [ path ] [])
                     ]
-                  [ text c
+                  [ text name
                   ]
                 ]
              )
-             categories
+          <| Dict.values
+          <| categories
     , case model.page of
         Loading ->
           text "loading..."
@@ -265,15 +314,16 @@ taysar model
               text "not found"
             Index ->
               text "home"
-            Category rpaths ->
-              case rpaths of
+            Contents category contentsResult ->
+              case contentsResult of
                 Err error ->
                   text (httpErrorToString error)
-                Ok paths ->
+                Ok contents ->
                   ul []
-                  <| List.map (\(name,path) -> li [] [ a [ href path ] [ text (String.replace "_" " " (stripFileExtension name)) ] ])
-                     paths
-            Markdown content ->
+                  <| List.map (\{name,path,link} -> li [] [ a [ href link ] [ text name ] ])
+                  <| Dict.values
+                  <| contents
+            Markdown _ content ->
               lazy (MD.toHtml []) content
             
     ]
