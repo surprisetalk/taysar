@@ -254,15 +254,6 @@ subscriptions model
 
 ---- VIEW ----------------------------------------------------------------------
 
-view : Model -> Document Msg
-view model
-  = { title = "TAYSAR"
-    , body  = [ fontAwesomeCDN
-              , css
-              , taysar model
-              ]
-    }
-
 fontAwesomeCDN
   = node "link"
     [ rel "stylesheet"
@@ -277,33 +268,53 @@ css
     ]
     []
 
-taysar : Model -> Html Msg
-taysar model
-  = main_ []
+view : Model -> Document Msg
+view model
+  = { title = "TAYSAR"
+    , body  = -- [ viewTaysar model
+              -- ]
+              [ fontAwesomeCDN
+              , css
+              , viewTaysar model
+              ]
+    }
+
+viewHeader
+  = Html.header []
     [ h1 []
       [ a [ href "/" ]
         [ text "TAYSAR"
         ]
       ]
-    , case model.categories of
+    ]
+
+viewAside model
+  = aside []
+    [ case model.categories of
         Err e ->
           p []
           [ text (httpErrorToString e)
           ]
         Ok categories ->
-          ul []
-          <| List.map
-             (\ {name,path} ->
-                li []
-                [ a [ href (absolute [ path ] [])
+          nav []
+          [ ul []
+            <| List.map
+               (\ {name,path} ->
+                  li []
+                  [ a [ href (absolute [ path ] [])
+                      ]
+                    [ text name
                     ]
-                  [ text name
                   ]
-                ]
-             )
-          <| Dict.values
-          <| categories
-    , case model.page of
+               )
+            <| Dict.values
+            <| categories
+          ]
+    ]
+
+viewSection model
+  = section []
+    [ case model.page of
         Loading ->
           text "loading..."
         Failure error -> 
@@ -325,7 +336,15 @@ taysar model
                   <| contents
             Markdown _ content ->
               lazy (MD.toHtml []) content
+    ]
             
+
+viewTaysar : Model -> Html Msg
+viewTaysar model
+  = main_ []
+    [ viewHeader
+    , viewAside model
+    , viewSection model
     ]
 
 stripFileExtension
