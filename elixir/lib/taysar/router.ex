@@ -2,18 +2,19 @@ defmodule Taysar.Router do
   use Plug.Router
   use Plug.Debugger
   require Logger
+  require EEx
 
   plug(Plug.Logger, log: :debug)
 
   plug(:match)
   plug(:dispatch)
 
+  EEx.function_from_file :defp, :template_index, "templates/index.eex", []
   # Simple GET Request handler for path /
   get "/" do
-    page_contents = EEx.eval_file("templates/index.eex", [])
     conn
     |> Plug.Conn.put_resp_content_type("text/html")
-    |> Plug.Conn.send_resp(200, page_contents)
+    |> Plug.Conn.send_resp(200, template_index())
   end
 
   # Simple GET Request handler for path /hello
