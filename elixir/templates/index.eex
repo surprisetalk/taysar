@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <h1>User Information Page</h1>
-    <p>Looks like you've requested information for the user with id <%= 0 %>.</p>
-    <p>Also, 1 + 1 = <%= 1 + 1 %></p>
-    <%= if "0" == "0" do %>
-      <%# we should tell everybody that user 0 is really cool %>
-      User zero is really cool!
-    <% end %>
+    <header>
+      <h1><a href="/">TAYSAR</a></h1>
+    </header>
+    <main>
+      <%= for category <- categories do %>
+        <a href="/<%= category %>"><%= category %></a>
+      <% end %>
+    </main>
   </body>
 </html>

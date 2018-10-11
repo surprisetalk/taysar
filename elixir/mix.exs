@@ -14,7 +14,7 @@ defmodule Taysar.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :cowboy, :plug, :poison],
+      extra_applications: [:logger, :cowboy, :plug, :poison, :tentacat, :httpoison, :earmark],
       mod: {Taysar.Application, []}
     ]
   end
@@ -26,7 +26,10 @@ defmodule Taysar.MixProject do
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
       {:cowboy, "~> 1.0.0"},
       {:plug, "~> 1.5"},
-      {:poison, "~> 3.1"}
+      {:poison, "~> 3.1"},
+      {:tentacat, "~> 1.0"},
+      {:httpoison, "~> 0.8"},
+      {:earmark, "~> 1.2.6" }
     ]
   end
 end
