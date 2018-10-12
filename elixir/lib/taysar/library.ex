@@ -14,6 +14,11 @@ defmodule Taysar.Library do
     GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
   end
 
+  @timeout 25000
+  def refresh do
+    GenServer.call(__MODULE__, :refresh, @timeout)
+  end
+
   def all do
     GenServer.call(__MODULE__, :all)
   end
@@ -61,6 +66,14 @@ defmodule Taysar.Library do
          }
     end )
     {:ok, shelves}
+  end
+
+  @impl true
+  def handle_call(:refresh, _from, all) do
+    case init() do
+      {:ok, all_} -> {:reply, :ok, all_}
+      _ -> {:reply, :error, all}
+    end
   end
 
   @impl true
