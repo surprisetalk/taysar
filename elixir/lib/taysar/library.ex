@@ -56,9 +56,8 @@ defmodule Taysar.Library do
     |> Enum.reduce( &Map.merge/2 )
   end
 
-  @impl true
-  def init(_args \\ []) do
-    shelves = apply_merge( for %{ "name" => category } <- find!() do
+  defp fetch_all() do
+    apply_merge( for %{ "name" => category } <- find!() do
         %{ category => apply_merge( for %{ "download_url" => downloadUrl, "name" => filename } <- find!( category ),
                            title = Path.rootname(filename),
                            %{body: body} = HTTPoison.get!( downloadUrl ) do
@@ -66,7 +65,13 @@ defmodule Taysar.Library do
            end )
          }
     end )
-    {:ok, shelves}
+  end
+
+  @impl true
+  def init(_args \\ []) do
+    schedule_refresh()
+    all = fetch_all()
+    {:ok, all}
   end
 
   @impl true
@@ -107,4 +112,16 @@ defmodule Taysar.Library do
   # def handle_cast({:push, item}, state) do
   #   {:noreply, [item | state]}
   # end
+
+  @impl true
+  def handle_info(:schedule_refresh, _all) do
+    all = fetch_all()
+    schedule_refresh()
+    {:noreply,all}
+  end
+
+  defp schedule_refresh() do
+    # Process.send_after(self(), :schedule_refresh, 1 * 60 * 60 * 1000)
+    Process.send_after(self(), :schedule_refresh, 30000)
+  end
 end
