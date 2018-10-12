@@ -46,7 +46,8 @@ defmodule Taysar.Library do
   # Server (callbacks)
 
   defp find!( path \\ "" ) do
-    {200, data, _response} = Tentacat.Contents.find( "surprisetalk", "writings", path )
+    client = Tentacat.Client.new(%{access_token: "493f7b256a489f4ba595b1d53288229367a05fc3"})
+    {200, data, _response} = Tentacat.Contents.find( client, "surprisetalk", "writings", path )
     data
   end
 
