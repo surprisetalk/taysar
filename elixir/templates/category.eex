@@ -1,6 +1,24 @@
-<div>
-  <!-- <h1><a class="title" href="/<%= category %>"><%= category %></a></h1> -->
-  <div class="box content is-medium">
+<style>
+
+  .content
+  {
+    line-height : 2;
+  }
+
+  .content li
+  {
+    list-style : none;
+  }
+
+  .content ul
+  {
+    margin-left : 0;
+  }
+
+</style>
+
+<!-- <h1><a class="title" href="/<%= category %>"><%= category %></a></h1> -->
+<div class="content is-medium">
   <ul>
     <%= for article <- articles do %>
       <li>
@@ -10,5 +28,4 @@
       </li>
     <% end %>
   </ul>
-  </div>
 </div>
