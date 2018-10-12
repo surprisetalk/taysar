@@ -14,7 +14,7 @@ defmodule Taysar.Application do
       Plug.Adapters.Cowboy.child_spec(
         scheme: :http,
         plug: Taysar.Router,
-        options: [port: 8085]
+        options: [port: if( System.get_env("PORT"), do: String.to_integer( System.get_env("PORT") ), else: 8085 )]
       )
     ]
 
