@@ -1,6 +1,6 @@
 <div>
   <!-- <h1><a class="title" href="/<%= category %>"><%= category %></a></h1> -->
-  <div class="box">
+  <div class="box content is-medium">
   <ul>
     <%= for article <- articles do %>
       <li>

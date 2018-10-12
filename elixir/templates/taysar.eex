@@ -8,55 +8,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>TAYSAR</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Lato:700|Lora:300|Fira+Mono|Merriweather:300|Source+Sans+Pro:700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" />
     
     <style>
 
-      /*
-
-      body {
-        margin : 0;
-        box-sizing : border-box;
-      }
-
-      main {
-        padding : 1em 2em;
-        display : grid;
-        grid-gap : 2em;
-        grid-template-columns : auto 1fr;
-        justify-items : stretch;
-      }
-
-      main nav {
-        justify-self : start;
-      }
-      main nav ul {
-        padding-left : 0;
-      }
-      main nav li {
-        list-style : none;
-      } 
-
-      main section article.article {
-        max-width : 36em;
-        margin : 0 auto;
-      }
-
-      main section article.articles
+      body, button, input, select, textarea
       {
+        font-family: 'Merriweather', 'Lora', serif;
       }
 
-      @media only screen and (max-width: 36em) {
-        main {
-          grid-template-columns : auto;
-          grid-gap : 0em;
-        }
+      #logo, h1, h2, h3, h4, h5, h6
+      {
+        font-family: 'Lato', 'Source Sans Pro', sans-serif;
       }
 
-      */
+      pre, code
+      {
+        font-family: 'Fira Mono', monospace;
+      }
 
-      .level.is-mobile .level-item {
-        margin-right : 0;
+      .menu-list a:hover
+      {
+        opacity : 0.65;
+        background-color : rgba(0,0,0,0);
+      }
+
+      .content li
+      {
+        list-style : circle;
       }
 
     </style>
@@ -78,15 +58,15 @@
     </div>
     <section class="section">
       <div class="container">
-        <div class="columns">
+        <div class="columns is-variable is-6">
           <div class="column is-narrow is-hidden-mobile">
             <aside class="menu">
               <ul class="menu-list">
-                <li><a class="is-size-5 has-text-weight-semibold has-text-primary" href="/">TAYSAR</a></li>
+                <li><a id="logo" class="is-size-5 has-text-weight-semibold has-text-primary" href="/">TAYSAR</a></li>
                 <li>
                   <ul class="menu-list">
                     <%= for category_ <- categories do %>
-                      <li><a class="<%= if( category_ == category, do: "is-active" ) %>" href="/<%= category_ %>"><%= category_ %></a></li>
+                      <li><a class="<%= if( category_ == category, do: "has-text-link" ) %>" href="/<%= category_ %>"><%= category_ %></a></li>
                     <% end %>
                   </ul>
                 </li>
