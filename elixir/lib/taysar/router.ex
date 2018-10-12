@@ -4,7 +4,13 @@ defmodule Taysar.Router do
   require Logger
   require EEx
 
-  plug(Plug.Logger, log: :debug)
+  plug Plug.Logger,
+    log: :debug
+
+  plug Plug.Static,
+    at: "/",
+    from: "static",
+    only: ~w(css images fonts js favicon.ico robots.txt)
 
   plug(:match)
   plug(:dispatch)
