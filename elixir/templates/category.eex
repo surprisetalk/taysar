@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <body>
-    <header>
-      <h1><a href="/">TAYSAR</a></h1>
-      <h2><a href="/<%= category %>"><%= category %></a></h2>
-    </header>
-    <main>
-      <ul>
-        <%= for article <- articles do %>
-          <li>
-            <a href="<%= "/" <> category <> "/" <> article %>">
-              <%= article %>
-            </a>
-          </li>
-        <% end %>
-      </ul>
-    </main>
-  </body>
-</html>
+<div>
+  <!-- <h1><a class="title" href="/<%= category %>"><%= category %></a></h1> -->
+  <div class="box">
+  <ul>
+    <%= for article <- articles do %>
+      <li>
+        <a href="<%= "/" <> category <> "/" <> article %>">
+          <%= article %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+  </div>
+</div>

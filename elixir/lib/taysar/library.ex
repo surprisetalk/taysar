@@ -6,6 +6,8 @@ defmodule Taysar.Library do
 
   require HTTPoison
 
+  require Earmark
+
   # Client
 
   def start_link(_opts) do
@@ -51,9 +53,10 @@ defmodule Taysar.Library do
   @impl true
   def init(_args \\ []) do
     shelves = apply_merge( for %{ "name" => category } <- find!() do
-        %{ category => apply_merge( for %{ "download_url" => downloadUrl, "name" => title } <- find!( category ),
+        %{ category => apply_merge( for %{ "download_url" => downloadUrl, "name" => filename } <- find!( category ),
+                           title = Path.rootname(filename),
                            %{body: body} = HTTPoison.get!( downloadUrl ) do
-             %{ title => body }       
+             %{ title => Earmark.as_html!(body) }       
            end )
          }
     end )

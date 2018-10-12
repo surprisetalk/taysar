@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TAYSAR</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css" />
+    
+    <style>
+
+      /*
+
+      body {
+        margin : 0;
+        box-sizing : border-box;
+      }
+
+      main {
+        padding : 1em 2em;
+        display : grid;
+        grid-gap : 2em;
+        grid-template-columns : auto 1fr;
+        justify-items : stretch;
+      }
+
+      main nav {
+        justify-self : start;
+      }
+      main nav ul {
+        padding-left : 0;
+      }
+      main nav li {
+        list-style : none;
+      } 
+
+      main section article.article {
+        max-width : 36em;
+        margin : 0 auto;
+      }
+
+      main section article.articles
+      {
+      }
+
+      @media only screen and (max-width: 36em) {
+        main {
+          grid-template-columns : auto;
+          grid-gap : 0em;
+        }
+      }
+
+      */
+
+      .level.is-mobile .level-item {
+        margin-right : 0;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <div class="column is-hidden-tablet">
+      <nav class="level is-mobile">
+        <p class="level-item has-text-centered">
+          <a style="font-size:0.75rem;" class="link" href="/">home</a>
+        </p>
+        <%= for category <- categories do %>
+          <p class="level-item has-text-centered">
+            <a style="font-size:0.75rem;" class="link" href="/<%= category %>"><%= category %></a>
+          </p>
+        <% end %>
+      </nav>
+      <!-- TODO: Change to icons to save space. -->
+    </div>
+    <section class="section">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-narrow is-hidden-mobile">
+            <aside class="menu">
+              <ul class="menu-list">
+                <li><a class="is-size-5 has-text-weight-semibold has-text-primary" href="/">TAYSAR</a></li>
+                <li>
+                  <ul class="menu-list">
+                    <%= for category_ <- categories do %>
+                      <li><a class="<%= if( category_ == category, do: "is-active" ) %>" href="/<%= category_ %>"><%= category_ %></a></li>
+                    <% end %>
+                  </ul>
+                </li>
+              </ul>
+            </aside>
+          </div>
+          <div class="column is-full-mobile is-two-thirds is-half-fullhd">
+            <%= body %>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

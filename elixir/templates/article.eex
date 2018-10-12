@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <body>
-    <header>
-      <h1><a href="/">TAYSAR</a></h1>
-      <h2><a href="/<%= category %>"><%= category %></a></h2>
-      <h3><a href="<%= "/" <> category <> "/" <> title %>"><%= title %></a></h3>
-    </header>
-    <main>
-      <%= body %>
-    </main>
-  </body>
-</html>
+<!-- <h1><a href="/">TAYSAR</a></h1> -->
+<!-- <h2><a href="/<%= category %>"><%= category %></a></h2> -->
+<!-- <h3><a href="<%= "/" <> category <> "/" <> title %>"><%= title %></a></h3> -->
+<div class="content">
+  <%= body %>
+</div>

@@ -1,13 +1,2 @@
-<!DOCTYPE html>
-<html>
-  <body>
-    <header>
-      <h1><a href="/">TAYSAR</a></h1>
-    </header>
-    <main>
-      <%= for category <- categories do %>
-        <a href="/<%= category %>"><%= category %></a>
-      <% end %>
-    </main>
-  </body>
-</html>
+<article>
+</article>
