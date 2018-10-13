@@ -23,6 +23,7 @@ defmodule Taysar.Router do
     conn
     |> put_resp_content_type("text/html")
     |> send_resp(200, template_taysar(nil,categories,template_index()))
+       # TODO: Use README.md!
   end
 
   EEx.function_from_file :defp, :template_category, "templates/category.eex", [:category,:articles]
