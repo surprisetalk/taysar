@@ -121,7 +121,6 @@ defmodule Taysar.Library do
   end
 
   defp schedule_refresh() do
-    # Process.send_after(self(), :schedule_refresh, 1 * 60 * 60 * 1000)
-    Process.send_after(self(), :schedule_refresh, 30000)
+    Process.send_after(self(), :schedule_refresh, 1 * 60 * 60 * 1000)
   end
 end
