@@ -13,9 +13,31 @@
     
     <style>
 
+      body
+      {
+	padding-bottom: 250px;
+      }
+
       body, button, input, select, textarea
       {
         font-family: 'Merriweather', 'Lora', serif;
+	color: black;
+      }
+
+      .content.is-medium
+      {
+	font-weight: 400;
+	line-height: 1.8;
+      }
+
+      .content ul ul
+      {
+	margin-top: 0;
+      }
+
+      .content ul p:not(:last-child)
+      {
+	margin-bottom: 0;
       }
 
       #logo, h1, h2, h3, h4, h5, h6
