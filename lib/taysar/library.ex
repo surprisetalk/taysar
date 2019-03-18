@@ -14,10 +14,10 @@ defmodule Taysar.Library do
     GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
   end
 
-  @timeout 25000
-  def refresh do
-    GenServer.call(__MODULE__, :refresh, @timeout)
-  end
+  # @timeout 25000
+  # def refresh do
+  #   GenServer.call(__MODULE__, :refresh, @timeout)
+  # end
 
   def all do
     GenServer.call(__MODULE__, :all)
@@ -69,18 +69,17 @@ defmodule Taysar.Library do
 
   @impl true
   def init(_args \\ []) do
-    schedule_refresh()
-    all = fetch_all()
-    {:ok, all}
+    schedule_refresh(0)
+    {:ok, []}
   end
 
-  @impl true
-  def handle_call(:refresh, _from, all) do
-    case init() do
-      {:ok, all_} -> {:reply, :ok, all_}
-      _ -> {:reply, :error, all}
-    end
-  end
+  # @impl true
+  # def handle_call(:refresh, _from, all) do
+  #   case init() do
+  #     {:ok, all_} -> {:reply, :ok, all_}
+  #     _ -> {:reply, :error, all}
+  #   end
+  # end
 
   @impl true
   def handle_call(:all, _from, all) do
@@ -116,11 +115,11 @@ defmodule Taysar.Library do
   @impl true
   def handle_info(:schedule_refresh, _all) do
     all = fetch_all()
-    schedule_refresh()
+    schedule_refresh(1 * 60 * 60 * 1000)
     {:noreply,all}
   end
 
-  defp schedule_refresh() do
-    Process.send_after(self(), :schedule_refresh, 1 * 60 * 60 * 1000)
+  defp schedule_refresh(t) do
+    Process.send_after(self(), :schedule_refresh, t)
   end
 end
