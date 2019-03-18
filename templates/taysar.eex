@@ -99,9 +99,7 @@
           </div>
           <!-- <div class="column is-full-mobile is-two-thirds is-half-fullhd"> -->
           <!-- <div class="column is-three-fifths-tablet is-half-desktop is-two-fifths-widescreen is-one-third-fullhd"> -->
-          <div class="column is-three-fifths-tablet is-three-fifths-desktop is-half-widescreen is-two-fifths-fullhd">
-            <%= body %>
-          </div>
+          <%= body %>
         </div>
       </div>
     </section>

@@ -18,14 +18,16 @@
 </style>
 
 <!-- <h1><a class="title" href="/<%= category %>"><%= category %></a></h1> -->
-<div class="content is-medium">
-  <ul>
-    <%= for article <- articles do %>
-      <li>
-        <a href="<%= "/" <> category <> "/" <> article %>">
-          <%= article %>
-        </a>
-      </li>
-    <% end %>
-  </ul>
+<div class="column">
+  <div class="content is-medium">
+    <ul>
+      <%= for article <- articles do %>
+        <li>
+          <a href="<%= "/" <> category <> "/" <> article %>">
+            <%= article %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>

@@ -1,63 +1,81 @@
-<div class="content is-medium">
-  <!-- <img src="/images/tiny-slaps.gif"/> -->
-  <h2>selected works</h2>
-  <ul>
-    <li><a href="/images/blood_brain_heart_helix.png">blood & brain | heart & helix</a></li>
-    <li><a href="/essays/The Speedy Media Manifesto">the speedy media manifesto</a></li>
-    <li><a href="/essays/The Problem with Podcasts">the problem with podcasts</a></li>
-    <li><a href="/essays/Time">the other invisible hands</a></li>
-    <li><a href="/essays/Set Phasers to Blind">set phasers to <em>blind</em></a></li>
-    <li><a href="/essays/Plunge">on plunges</a></li>
-    <li><a href="/essays/Nothing">much ado</a></li>
-    <li><a href="/essays/Becoming">becoming</a></li>
-    <li><a href="/essays/Always Waiting">waiting</a></li>
-  </ul>
-  <h2>what i've been doing lately</h2>
-  <ul>
-    <li>making websites</a> with <a href="http://elixir-lang.org/">elixir</a> and <a href="http://elm-lang.org/">elm</a></li>
-    <li>hanging out with <a href="http://jander.land/">cool people</a></li>
-    <li>falling in love</li>
-    <li>stuyding <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">entropy</a> &amp; <a href="https://en.wikipedia.org/wiki/Computational_complexity_theory">complexity</a></li>
-    <li>listening to <a href="https://stownpodcast.org/">podcasts</a></li>
-    <li>watching <a href="https://www.youtube.com/watch?v=z30Y572EmCk&t=7s">anime</a></li>
-    <li>working on a metaprogramming language</li>
-    <li><a href="https://soundcloud.com/taysar/the-alchemist-pt-1">writing songs about girls</a></li>
-    <li>optimizing my <a href="https://xkcd.com/378/">text editor</a></li>
-    <li>doing nothing</li>
-    <li><a href="/essays/Nothing">writing essays about doing nothing</a></li>
-    <li>watching <a href="https://www.youtube.com/watch?v=1h7rLHNXio8&t=1237s">lectures</a></li>
-  </ul>
 
-  <!-- <h2>things i like</h2> -->
+<style>
 
-  <!-- <h2>things i dislike</h2> -->
+  .content li
+  {
+    list-style : none;
+  }
 
-  <!-- <h2>inspirations</h2> -->
+  .content ul
+  {
+    margin-left : 0;
+  }
 
-  <!-- <h2>solving problems</h2> -->
+</style>
 
-  <!-- <p>I love solving problems! Feel free to <a href="mailto:taylorsarrafian@gmail.com">email me</a> if you're stumped with anything. Or just to say hello.</p> -->
-
-  <!-- <h2>unpopular opinions</h2> -->
-
-  <!-- <h2>cool media</h2> -->
-
-  <!-- <h2>great lectures</h2> -->
+<div class="column">
+  <div class="content is-medium">
   
-  <!-- <h2>quality memes</h2> -->
-
-  <!-- <h2>trying to look cool on camera</h2> -->
-
-  <!-- <img src='/images/stacey.jpg'/> -->
-  <!-- <img src='/images/music.jpg'/> -->
-  <!-- <img src='/images/engineering.jpg'/> -->
-
-  <!-- <h2></h2> -->
-
-  <!-- <pre>()</pre> -->
-
-  <!-- <br/> -->
-
-  <!-- <hr/> -->
-
+    <!-- <img src="/images/tiny-slaps.gif"/> -->
+    <h2>selected works</h2>
+    <ul>
+      <li><a href="/images/blood_brain_heart_helix.png">blood & brain | heart & helix</a></li>
+      <li><a href="/essays/The Speedy Media Manifesto">the speedy media manifesto</a></li>
+      <li><a href="/essays/The Problem with Podcasts">the problem with podcasts</a></li>
+      <li><a href="/essays/Time">the other invisible hands</a></li>
+      <li><a href="/essays/Set Phasers to Blind">set phasers to <em>blind</em></a></li>
+      <li><a href="/essays/Plunge">on plunges</a></li>
+      <li><a href="/essays/Nothing">much ado</a></li>
+      <li><a href="/essays/Becoming">becoming</a></li>
+      <li><a href="/essays/Always Waiting">waiting</a></li>
+    </ul>
+    <h2>what i've been doing lately</h2>
+    <ul>
+      <li>making websites</a> with <a href="http://elixir-lang.org/">elixir</a> and <a href="http://elm-lang.org/">elm</a></li>
+      <li>hanging out with <a href="http://jander.land/">cool people</a></li>
+      <li>falling in love</li>
+      <li>stuyding <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">entropy</a> &amp; <a href="https://en.wikipedia.org/wiki/Computational_complexity_theory">complexity</a></li>
+      <li>listening to <a href="https://stownpodcast.org/">podcasts</a></li>
+      <li>watching <a href="https://www.youtube.com/watch?v=z30Y572EmCk&t=7s">anime</a></li>
+      <li>working on a metaprogramming language</li>
+      <li><a href="https://soundcloud.com/taysar/the-alchemist-pt-1">writing songs about girls</a></li>
+      <li>optimizing my <a href="https://xkcd.com/378/">text editor</a></li>
+      <li>doing nothing</li>
+      <li><a href="/essays/Nothing">writing essays about doing nothing</a></li>
+      <li>watching <a href="https://www.youtube.com/watch?v=1h7rLHNXio8&t=1237s">lectures</a></li>
+    </ul>
+  
+    <!-- <h2>things i like</h2> -->
+  
+    <!-- <h2>things i dislike</h2> -->
+  
+    <!-- <h2>inspirations</h2> -->
+  
+    <!-- <h2>solving problems</h2> -->
+  
+    <!-- <p>I love solving problems! Feel free to <a href="mailto:taylorsarrafian@gmail.com">email me</a> if you're stumped with anything. Or just to say hello.</p> -->
+  
+    <!-- <h2>unpopular opinions</h2> -->
+  
+    <!-- <h2>cool media</h2> -->
+  
+    <!-- <h2>great lectures</h2> -->
+    
+    <!-- <h2>quality memes</h2> -->
+  
+    <!-- <h2>trying to look cool on camera</h2> -->
+  
+    <!-- <img src='/images/stacey.jpg'/> -->
+    <!-- <img src='/images/music.jpg'/> -->
+    <!-- <img src='/images/engineering.jpg'/> -->
+  
+    <!-- <h2></h2> -->
+  
+    <!-- <pre>()</pre> -->
+  
+    <!-- <br/> -->
+  
+    <!-- <hr/> -->
+  
+  </div>
 </div>
