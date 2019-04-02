@@ -23,7 +23,7 @@
     <ul>
       <%= for article <- articles do %>
         <li>
-          <a href="<%= "/" <> category <> "/" <> article %>">
+          <a href="<%= "/" <> category <> "/" <> URI.encode( article, &(&1 != ??) ) %>">
             <%= article %>
           </a>
         </li>
