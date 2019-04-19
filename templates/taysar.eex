@@ -40,7 +40,7 @@
       {
 	font-weight: 300;
 	font-size: 1.10rem;
-	line-height: 1.85;
+	/* line-height: 1.85; */
       }
 
       .content ul ul
