@@ -1,9 +1,15 @@
 
 <style>
 
+  .content h2:not(:first-child)
+  {
+    margin-top: 1.25em;
+  }
+
   .content li
   {
-    list-style : none;
+    list-style  : none;
+    line-height : 1.5;
   }
 
   .content ul
@@ -13,12 +19,12 @@
 
 </style>
 
-<div class="column">
+<div class="column is-three-fifths-tablet is-three-fifths-desktop is-half-widescreen is-two-fifths-fullhd">
   <div class="content is-medium">
   
     <!-- <img src="/images/tiny-slaps.gif"/> -->
 
-    <h2>selected works</h2>
+    <h2>Selected Works</h2>
     <ul>
       <li><a href="/images/blood_brain_heart_helix.png">blood & brain | heart & helix</a></li>
       <li><a href="/essays/Don't Feel Your Feelings">don't feel your feelings</a></li>
@@ -33,7 +39,13 @@
       <li><a href="/essays/Becoming">becoming</a></li>
       <li><a href="/essays/Always Waiting">waiting</a></li>
     </ul>
-    <h2>what i've been doing lately</h2>
+
+  <!-- </div> -->
+<!-- </div> -->
+<!-- <div class="column is-three-fifths-tablet is-three-fifths-desktop is-half-widescreen is-two-fifths-fullhd"> -->
+  <!-- <div class="content is-medium"> -->
+
+    <h2>What I've Been Doing Lately</h2>
     <ul>
       <li>making websites</a> with <a href="http://elixir-lang.org/">elixir</a> and <a href="http://elm-lang.org/">elm</a></li>
       <li>hanging out with <a href="http://jander.land/">cool people</a></li>

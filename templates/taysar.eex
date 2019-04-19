@@ -14,7 +14,8 @@
 
     <!-- <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i|Lora:400,400i|Merriweather:300,300i,400,400i|Lato:700|Source+Sans+Pro:700|Fira+Mono" rel="stylesheet"> -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Lora:400,400i|Source+Sans+Pro:700,700i|Fira+Mono:400" rel="stylesheet"> -->
-    <link href="/css/fonts.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:300,300i,400,400i,600,600i|Fira+Mono:400" rel="stylesheet">
+    <!-- <link href="/css/fonts.css" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"> -->
     <link href="/css/bulma.min.css" rel="stylesheet">
     
@@ -25,15 +26,19 @@
 	padding-bottom: 250px;
       }
 
+      a
+      {
+      }
+
       body, button, input, select, textarea
       {
-        font-family: 'Lora', serif;
+        font-family: 'Source Serif Pro', serif;
 	color: black;
       }
 
       .content.is-medium
       {
-	font-weight: 400;
+	font-weight: 300;
 	font-size: 1.10rem;
 	line-height: 1.85;
       }
@@ -48,11 +53,19 @@
 	margin-bottom: 0;
       }
 
-      #logo, h1, h2, h3, h4, h5, h6
+      h1, h2, h3, h4, h5, h6
       {
-        font-family: 'Source Sans Pro', sans-serif;
+        font-family: 'Source Serif Pro', serif;
+        font-weight: 600;
       }
 
+      .content h1, .content h2, .content h3, .content h4, .content h5, .content h6
+      {
+        font-variant: small-caps;
+        letter-spacing: -0.01rem;
+      }
+
+      /*
       #logo
       {
         color: white;
@@ -61,11 +74,12 @@
         letter-spacing: 0.2rem !important;
         margin-bottom: -0.75rem;
       }
+      */
 
       aside.menu .menu-list .menu-list
       {
         text-align: right;
-        border-right: 1px solid #dbdbdb;
+        font-variant: small-caps;
         border-left: 0px solid #dbdbdb;
       }
 
@@ -107,9 +121,10 @@
           <div class="column is-narrow is-hidden-mobile">
             <aside class="menu">
               <ul class="menu-list">
-                <li><a id="logo" class="has-text-weight-semibold" href="/">TAYSAR</a></li>
+                <!-- <li><a id="logo" class="has-text-weight-semibold" href="/">TAYSAR</a></li> -->
                 <li>
                   <ul class="menu-list">
+                    <li><a class="<%= if( !category, do: "has-text-link" ) %>" href="/">home</a></li>
                     <%= for category_ <- categories do %>
                       <li><a class="<%= if( category_ == category, do: "has-text-link" ) %>" href="/<%= category_ %>"><%= category_ %></a></li>
                     <% end %>
