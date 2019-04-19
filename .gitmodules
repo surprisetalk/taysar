@@ -1,0 +1,3 @@
+[submodule "static/writings"]
+	path = static/writings
+	url = github:surprisetalk/writings.git

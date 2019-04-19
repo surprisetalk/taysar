@@ -10,7 +10,7 @@ defmodule Taysar.Application do
     children = [
       # Starts a worker by calling: Taysar.Worker.start_link(arg)
       # {Taysar.Worker, arg},
-      Taysar.Library,
+      # Taysar.Library,
       Plug.Adapters.Cowboy.child_spec(
         scheme: :http,
         plug: Taysar.Router,
