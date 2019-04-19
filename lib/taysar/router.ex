@@ -54,7 +54,7 @@ defmodule Taysar.Router do
     end
   end
 
-  EEx.function_from_file :defp, :template_article, "templates/article.eex", [:category,:body]
+  EEx.function_from_file :defp, :template_article, "templates/article.eex", [:body]
   get "/:category/:title" do
     case {Taysar.Library.get_categories(), Taysar.Library.get_file(category,title)} do
       {{:ok, categories},{:ok,article}} ->
