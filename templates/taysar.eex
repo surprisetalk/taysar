@@ -49,6 +49,22 @@
         font-family: 'Source Sans Pro', sans-serif;
       }
 
+      #logo
+      {
+        color: white;
+        background-color: hsl(171, 45%, 75%);
+        font-size: 1.5rem !important;
+        letter-spacing: 0.2rem !important;
+        margin-bottom: -0.75rem;
+      }
+
+      aside.menu .menu-list .menu-list
+      {
+        text-align: right;
+        border-right: 1px solid #dbdbdb;
+        border-left: 0px solid #dbdbdb;
+      }
+
       pre, code
       {
         font-family: 'Fira Mono', monospace;
@@ -88,7 +104,7 @@
           <div class="column is-narrow is-hidden-mobile">
             <aside class="menu">
               <ul class="menu-list">
-                <li><a id="logo" class="is-size-5 has-text-weight-semibold has-text-primary" href="/">TAYSAR</a></li>
+                <li><a id="logo" class="has-text-weight-semibold" href="/">TAYSAR</a></li>
                 <li>
                   <ul class="menu-list">
                     <%= for category_ <- categories do %>
