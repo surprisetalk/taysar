@@ -60,7 +60,7 @@ defmodule Taysar.Router do
       {{:ok, categories},{:ok,article}} ->
         conn
         |> put_resp_content_type("text/html")
-        |> send_resp(200, template_taysar(category, categories, template_article(category,article)))
+        |> send_resp(200, template_taysar(category, categories, template_article(article)))
       {{:ok, categories},{:error, :enoent}} ->
         send_resp(conn, 404, template_taysar(category, categories, template_message("Not found.")))
       {{:ok, categories},{:error, reason}} ->
