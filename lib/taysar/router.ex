@@ -4,8 +4,10 @@ defmodule Taysar.Router do
   require Logger
   require EEx
 
-  plug Plug.Logger,
-    log: :debug
+  # plug Plug.Logger,
+  #   log: :debug
+
+  plug Plug.Logger
 
   plug Plug.Static,
     at: "/",
@@ -16,6 +18,7 @@ defmodule Taysar.Router do
   plug(:dispatch)
 
   EEx.function_from_file :defp, :template_taysar, "templates/taysar.eex", [:category,:categories,:body]
+  EEx.function_from_file :defp, :template_message, "templates/message.eex", [:body]
 
   EEx.function_from_file :defp, :template_index, "templates/index.eex", []
   get "/" do
@@ -23,10 +26,10 @@ defmodule Taysar.Router do
       {:ok, categories} ->
         conn
         |> put_resp_content_type("text/html")
-        |> send_resp(200, template_taysar(nil,categories,template_index()))
+        |> send_resp(200, template_taysar(nil, categories, template_index()))
       {:error, reason} ->
         IO.inspect(reason)
-        send_resp(conn, 500, "")
+        send_resp(conn, 500, template_taysar(nil, [], template_message("Something went wrong.")))
     end
   end
 
@@ -34,45 +37,47 @@ defmodule Taysar.Router do
   get "/:category" do
     case {Taysar.Library.get_categories(), Taysar.Library.get_category(category)} do
       {{:ok, categories},{:ok,articles}} ->
-        category_page = template_category(category,articles)
-        taysar_page = template_taysar(category,categories,category_page)
         conn
         |> put_resp_content_type("text/html")
-        |> send_resp(200, taysar_page)
-      {_,{:error, :enoent}} ->
-        send_resp(conn, 404, "not found")
-      {{:error, reason},_} ->
+        |> send_resp(200, template_taysar(category, categories, template_category(category,articles)))
+      {{:ok, categories},{:error, :enoent}} ->
+        send_resp(conn, 404, template_taysar(category, categories, template_message("Not found.")))
+      {{:ok, categories},{:error, reason}} ->
         IO.inspect(reason)
-        send_resp(conn, 500, "")
+        send_resp(conn, 500, template_taysar(category, categories, template_message("Something went wrong.")))
       {_,{:error, reason}} ->
         IO.inspect(reason)
-        send_resp(conn, 500, "")
+        send_resp(conn, 500, template_taysar(category, [], template_message("Something went wrong.")))
+      {{:error, reason},_} ->
+        IO.inspect(reason)
+        send_resp(conn, 500, template_taysar(category, [], template_message("Something went wrong.")))
     end
   end
 
-  EEx.function_from_file :defp, :template_article, "templates/article.eex", [:category,:title,:body]
+  EEx.function_from_file :defp, :template_article, "templates/article.eex", [:category,:body]
   get "/:category/:title" do
     case {Taysar.Library.get_categories(), Taysar.Library.get_file(category,title)} do
       {{:ok, categories},{:ok,article}} ->
-        article_page = template_article(category,title,article)
-        taysar_page = template_taysar(category,categories,article_page)
         conn
         |> put_resp_content_type("text/html")
-        |> send_resp(200, taysar_page)
-      {_,{:error, :enoent}} ->
-        send_resp(conn, 404, "not found")
-      {{:error, reason},_} ->
+        |> send_resp(200, template_taysar(category, categories, template_article(category,article)))
+      {{:ok, categories},{:error, :enoent}} ->
+        send_resp(conn, 404, template_taysar(category, categories, template_message("Not found.")))
+      {{:ok, categories},{:error, reason}} ->
         IO.inspect(reason)
-        send_resp(conn, 500, "")
+        send_resp(conn, 500, template_taysar(category, categories, template_message("Something went wrong.")))
       {_,{:error, reason}} ->
         IO.inspect(reason)
-        send_resp(conn, 500, "")
+        send_resp(conn, 500, template_taysar(category, [], template_message("Something went wrong.")))
+      {{:error, reason},_} ->
+        IO.inspect(reason)
+        send_resp(conn, 500, template_taysar(category, [], template_message("Something went wrong.")))
     end
   end
 
   # "Default" route that will get called when no other route is matched
   match _ do
-    send_resp(conn, 404, "not found")
+    send_resp(conn, 404, template_taysar(nil, [], template_message("Not found.")))
   end
 end
 
