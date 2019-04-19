@@ -76,6 +76,13 @@
       }
       */
 
+      nav.level a
+      {
+        font-size: 0.75rem;
+        font-variant: small-caps;
+        letter-spacing: -0.01rem;
+      }
+
       aside.menu .menu-list .menu-list
       {
         text-align: right;
@@ -106,11 +113,11 @@
     <div class="column is-hidden-tablet">
       <nav class="level is-mobile">
         <p class="level-item has-text-centered">
-          <a style="font-size:0.75rem;" class="link" href="/">home</a>
+          <a class="link" href="/">home</a>
         </p>
         <%= for category <- categories do %>
           <p class="level-item has-text-centered">
-            <a style="font-size:0.75rem;" class="link" href="/<%= category %>"><%= category %></a>
+            <a class="link" href="/<%= category %>"><%= category %></a>
           </p>
         <% end %>
       </nav>

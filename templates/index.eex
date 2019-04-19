@@ -19,7 +19,7 @@
 
 </style>
 
-<div class="column is-three-fifths-tablet is-three-fifths-desktop is-half-widescreen is-two-fifths-fullhd">
+<div class="column is-narrow">
   <div class="content is-medium">
   
     <!-- <img src="/images/tiny-slaps.gif"/> -->
@@ -42,10 +42,10 @@
 
   <!-- </div> -->
 <!-- </div> -->
-<!-- <div class="column is-three-fifths-tablet is-three-fifths-desktop is-half-widescreen is-two-fifths-fullhd"> -->
+<!-- <div class="column"> -->
   <!-- <div class="content is-medium"> -->
 
-    <h2>What I've Been Doing Lately</h2>
+    <h2>Recently</h2>
     <ul>
       <li>making websites</a> with <a href="http://elixir-lang.org/">elixir</a> and <a href="http://elm-lang.org/">elm</a></li>
       <li>hanging out with <a href="http://jander.land/">cool people</a></li>
