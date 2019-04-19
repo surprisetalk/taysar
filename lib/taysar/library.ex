@@ -24,7 +24,7 @@ defmodule Taysar.Library do
     
   def get_file(category, title) do
     md   = File.read( Path.join([ "static", "writings", category, title <> ".md"   ]) )
-    html = File.read( Path.join([ "static", "writings", category, title <> ".txt"  ]) )
+    html = File.read( Path.join([ "static", "writings", category, title <> ".html" ]) )
     case {md, html} do
       {{:ok, body}, _} -> {:ok, Earmark.as_html!(body)}
       {_, {:ok, body}} -> {:ok, body}
