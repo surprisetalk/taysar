@@ -153,6 +153,7 @@
                     <%= for category_ <- categories do %>
                       <li><a class="<%= if( category_ == category, do: "has-text-link" ) %>" href="/<%= category_ %>"><%= category_ %></a></li>
                     <% end %>
+                    <!-- <li><a href="mailto:taylorsarrafian@gmail.com?subject=Hello">contact</a></li> -->
                   </ul>
                 </li>
               </ul>

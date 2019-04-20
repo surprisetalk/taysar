@@ -4,13 +4,18 @@ defmodule Taysar.Library do
 
   require File
 
-  def get_categories() do
+  def get_categories do
     case File.ls("static/writings") do
       {:ok, categories} ->
         {:ok, Enum.filter(categories, fn str -> not String.starts_with?(str, ".") end)}
       {:error, reason} ->
         {:error, reason}
     end
+  end
+
+  def get_categories! do
+    {:ok, categories} = get_categories()
+    categories
   end
   
   def get_category(category) do
@@ -21,8 +26,13 @@ defmodule Taysar.Library do
         {:error, reason}
     end
   end
+
+  def get_category!(category) do
+    {:ok, category} = get_category(category)
+    category
+  end
     
-  def get_file(category, title) do
+  def get_article(category, title) do
     md   = File.read( Path.join([ "static", "writings", category, title <> ".md"   ]) )
     html = File.read( Path.join([ "static", "writings", category, title <> ".html" ]) )
     case {md, html} do

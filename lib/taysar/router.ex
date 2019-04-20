@@ -3,16 +3,17 @@ defmodule Taysar.Router do
   use Plug.Debugger
   require Logger
   require EEx
+  import Taysar.Library
 
   # plug Plug.Logger,
   #   log: :debug
 
-  plug Plug.Logger
+  # plug Plug.Logger
 
   plug Plug.Static,
     at: "/",
     from: "static",
-    only: ~w(css images fonts js favicon.ico robots.txt)
+    only: ~w(css images fonts js sitemaps favicon.ico robots.txt)
 
   plug(:match)
   plug(:dispatch)
@@ -22,7 +23,7 @@ defmodule Taysar.Router do
 
   EEx.function_from_file :defp, :template_index, "templates/index.eex", []
   get "/" do
-    case Taysar.Library.get_categories() do
+    case get_categories() do
       {:ok, categories} ->
         page = template_taysar(
           "TAYSAR",
@@ -42,7 +43,7 @@ defmodule Taysar.Router do
 
   EEx.function_from_file :defp, :template_category, "templates/category.eex", [:category,:articles]
   get "/:category" do
-    case {Taysar.Library.get_categories(), Taysar.Library.get_category(category)} do
+    case {get_categories(), get_category(category)} do
       {{:ok, categories},{:ok,articles}} ->
         description = ( articles |> Enum.join(", ") |> String.slice(0, 500) ) <> "..."
         page = template_taysar(
@@ -71,7 +72,7 @@ defmodule Taysar.Router do
 
   EEx.function_from_file :defp, :template_article, "templates/article.eex", [:body]
   get "/:category/:title" do
-    case {Taysar.Library.get_categories(), Taysar.Library.get_file(category,title)} do
+    case {get_categories(), get_article(category,title)} do
       {{:ok, categories},{:ok,article}} ->
         page = template_taysar(
           "TAYSAR | " <> title,

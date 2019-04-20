@@ -10,12 +10,12 @@ defmodule Taysar.Application do
     children = [
       # Starts a worker by calling: Taysar.Worker.start_link(arg)
       # {Taysar.Worker, arg},
-      # Taysar.Library,
       Plug.Adapters.Cowboy.child_spec(
         scheme: :http,
         plug: Taysar.Router,
         options: [port: if( System.get_env("PORT"), do: String.to_integer( System.get_env("PORT") ), else: 8085 )]
-      )
+      ),
+      Taysar.Sitemap
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
