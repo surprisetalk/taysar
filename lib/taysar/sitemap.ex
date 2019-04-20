@@ -11,21 +11,10 @@ defmodule Taysar.Sitemap do
     compress: false
 
   def start_link(_arg) do
-    generate_sitemap()
-    Task.start_link(&poll/0)
+    Task.start_link(&generate_sitemap/0)
   end
 
-  def poll() do
-    receive do
-    after
-      86_400_000 ->
-        generate_sitemap()
-        ping()
-        poll()
-    end
-  end
-
-  defp generate_sitemap() do
+  def generate_sitemap() do
     create do
       add "/",
         priority: 1,
@@ -45,6 +34,8 @@ defmodule Taysar.Sitemap do
           end
       end
     end
+
+    ping()
   end
 
   # git -C static/writings ls-files -z category | xargs -0 -n1 -I{} -- git -C static/writings log -1 --format="%ai {}" {}
