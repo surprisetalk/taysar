@@ -76,15 +76,21 @@
       }
       */
 
+      .level.is-mobile .level-item:not(:last-child)
+      {
+        margin-right: 0;
+      }
+
       nav.level a
       {
-        font-size: 0.75rem;
+        font-size: 0.82rem;
         font-variant: small-caps;
         letter-spacing: -0.01rem;
       }
 
       aside.menu .menu-list .menu-list
       {
+        font-size: 1.1rem;
         text-align: right;
         font-variant: small-caps;
         border-left: 0px solid #dbdbdb;
