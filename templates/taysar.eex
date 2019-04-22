@@ -127,8 +127,15 @@
         100 { background-color: #FFF; }
       }
 
-      .content .token.number {
-        display: inline;
+      .content code[class*="language-"], .content pre[class*="language-"]
+      {
+        font-size: 0.85em;
+      }
+
+      .content .token.number
+      {
+        font-size: 0.85em;
+        /* display: inline; */
         margin-right: 0;
       }
 
