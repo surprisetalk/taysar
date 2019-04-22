@@ -12,12 +12,15 @@
       <meta name=”description” content="<%= description %>"/>
     <% end %>
 
+    <link href="/css/prism.css" rel="stylesheet"/>
     <!-- <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i|Lora:400,400i|Merriweather:300,300i,400,400i|Lato:700|Source+Sans+Pro:700|Fira+Mono" rel="stylesheet"> -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Lora:400,400i|Source+Sans+Pro:700,700i|Fira+Mono:400" rel="stylesheet"> -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:300,300i,400,400i,600,600i|Fira+Mono:400" rel="stylesheet"> -->
-    <link href="/css/fonts.css" rel="stylesheet">
+    <link href="/css/fonts.css" rel="stylesheet"/>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"> -->
-    <link href="/css/bulma.min.css" rel="stylesheet">
+    <link href="/css/bulma.min.css" rel="stylesheet"/>
+
+    <script src="/js/prism.js"></script>
     
     <style>
       
@@ -122,6 +125,11 @@
          0% { background-color: #FFF; }
         50% { background-color: #DDD; }
         100 { background-color: #FFF; }
+      }
+
+      .content .token.number {
+        display: inline;
+        margin-right: 0;
       }
 
     </style>

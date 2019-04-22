@@ -36,7 +36,7 @@ defmodule Taysar.Library do
     md   = File.read( Path.join([ "static", "writings", category, title <> ".md"   ]) )
     html = File.read( Path.join([ "static", "writings", category, title <> ".html" ]) )
     case {md, html} do
-      {{:ok, body}, _} -> {:ok, Earmark.as_html!(body)}
+      {{:ok, body}, _} -> {:ok, Earmark.as_html!(body, %Earmark.Options{code_class_prefix: "lang-"})}
       {_, {:ok, body}} -> {:ok, body}
       {{:error, :enoent}, {:error, :enoent}} -> {:error, :enoent}
       {{:error, reason}, _} -> {:error, reason}
