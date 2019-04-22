@@ -16,7 +16,7 @@ defmodule Taysar.Sitemap do
 
   def generate_sitemap() do
     create do
-      add "/",
+      add "",
         priority: 1,
         changefreq: "weekly",
         lastmod: lastmod(".", "templates/index.eex")
