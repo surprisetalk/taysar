@@ -5,7 +5,7 @@ defmodule Taysar.Sitemap do
 
   # BUG: www?
   use Sitemap,
-    host: "http://taysar.com",
+    host: "https://taysar.com",
     files_path: "static/sitemaps/",
     public_path: "sitemaps/",
     compress: false
