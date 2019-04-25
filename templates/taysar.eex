@@ -9,8 +9,7 @@
     <title><%= title %></title>
 
     <%= if description do %>
-      <description><%= description %></description>
-      <meta name=”description” content="<%= description %>"/>
+      <meta name="description" content="<%= description %>"/>
     <% end %>
 
     <link rel="icon" href="https://taysar.com/favicon.ico" type="image/x-icon">
