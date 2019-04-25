@@ -9,6 +9,7 @@
     <title><%= title %></title>
 
     <%= if description do %>
+      <description><%= description %></description>
       <meta name=”description” content="<%= description %>"/>
     <% end %>
 
