@@ -15,8 +15,14 @@ defmodule Taysar.Router do
     from: "static",
     only: ~w(css images fonts js sitemaps favicon.ico robots.txt)
 
-  plug(:match)
-  plug(:dispatch)
+  plug :match
+  plug Plug.Parsers,
+    parsers: [:json, :urlencoded],
+    pass:  ["application/json"],
+    json_decoder: Poison
+  plug :dispatch 
+
+  # TODO: Transform each of the template functions to accept a Map
 
   EEx.function_from_file :defp, :template_taysar, "templates/taysar.eex", [:title,:description,:category,:categories,:body]
   EEx.function_from_file :defp, :template_message, "templates/message.eex", [:body]
@@ -40,6 +46,102 @@ defmodule Taysar.Router do
         send_resp(conn, 500, template_taysar(nil, nil, nil, [], template_message("Something went wrong.")))
     end
   end
+
+  EEx.function_from_file :defp, :template_routine, "templates/routine.eex", [:password,:routine,:subroutines]
+  get "/routine" do
+    case get_categories() do
+      {:ok, categories} ->
+        password = conn.query_params["password"]
+        %Postgrex.Result{rows: routines} = Postgrex.query!(
+          Postgrex,
+          """
+            SELECT value FROM routines 
+            WHERE created_at 
+              BETWEEN DATE_TRUNC( 'day', NOW() AT TIME ZONE 'America/Los_Angeles'                    )
+                  AND DATE_TRUNC( 'day', NOW() AT TIME ZONE 'America/Los_Angeles' + INTERVAL '1 day' )
+            ORDER BY created_at DESC
+            LIMIT 1
+          """,
+          []
+        )
+        subroutines = List.first(List.first(routines) || []) || %{
+          "Frolic"     => false,
+          "Grow"       => false,
+          "Tidy"       => false,
+          "Nothing"    => false,
+          "Exercise"   => false,
+          "Fuel"       => false,
+          "Groom"      => false,
+          "Calibrate"  => false,
+          "Strategize" => false,
+          "Connect"    => false,
+          "Learn"      => false,
+          "Create"     => false,
+          "Toil"       => false,
+          "Review"     => false,
+          "Simplify"   => false,
+          "Consume"    => false,
+          "Read"       => false,
+          "Sleep"      => false
+        }
+        page = template_taysar(
+          "TAYSAR | Daily Routine",
+          "Taylor Sarrafian's daily routines stats.",
+          nil,
+          categories,
+          template_routine(
+            password == System.get_env("TS_PASSWORD") && password,
+            Taysar.Routine.routine,
+            subroutines
+          )
+        )
+        conn
+        |> put_resp_content_type("text/html")
+        |> send_resp(200, page)
+      {:error, reason} ->
+        IO.inspect(reason)
+        send_resp(conn, 500, template_taysar(nil, nil, nil, [], template_message("Something went wrong.")))
+    end
+  end
+
+  post "/routine" do
+    password = conn.query_params["password"]
+    if password == System.get_env("TS_PASSWORD") do
+      routine = Map.merge(
+        %{
+          "Frolic"     => false,
+          "Grow"       => false,
+          "Tidy"       => false,
+          "Nothing"    => false,
+          "Exercise"   => false,
+          "Fuel"       => false,
+          "Groom"      => false,
+          "Calibrate"  => false,
+          "Strategize" => false,
+          "Connect"    => false,
+          "Learn"      => false,
+          "Create"     => false,
+          "Toil"       => false,
+          "Review"     => false,
+          "Simplify"   => false,
+          "Consume"    => false,
+          "Read"       => false,
+          "Sleep"      => false
+        },
+        for({k, _} <- conn.body_params, into: %{}, do: {k, true})
+      )
+      %Postgrex.Result{} = Postgrex.query!(
+        Postgrex,
+        "INSERT INTO routines (value,created_at) VALUES ($1, NOW() AT TIME ZONE 'America/Los_Angeles')",
+        [routine]
+      )
+      conn
+      |> Plug.Conn.put_resp_header("location", "/routine?password=#{password}")
+      |> Plug.Conn.resp(301, "Redirecting to routine...")
+    end
+  end
+
+  # TODO: POST /routine writes to DB then redirects to GET /routine
 
   EEx.function_from_file :defp, :template_category, "templates/category.eex", [:category,:articles]
   get "/:category" do
@@ -70,7 +172,7 @@ defmodule Taysar.Router do
     end
   end
 
-  EEx.function_from_file :defp, :template_article, "templates/article.eex", [:body]
+  EEx.function_from_file :defp, :template_article, "templates/article.eex", [:title,:body]
   get "/:category/:title" do
     case {get_categories(), get_article(category,title)} do
       {{:ok, categories},{:ok,article}} ->
@@ -81,7 +183,7 @@ defmodule Taysar.Router do
           nil,
           category,
           categories,
-          template_article(article)
+          template_article(title, article)
         )
         conn
         |> put_resp_content_type("text/html")

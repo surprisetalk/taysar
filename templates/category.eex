@@ -19,6 +19,7 @@
 
 <div class="column">
   <div class="content is-medium">
+    <!-- TODO: h1 for seo? -->
     <ul>
       <%= for article <- articles do %>
         <li>

@@ -4,6 +4,9 @@ defmodule Taysar.Library do
 
   require File
 
+  # TODO: Each of these should return richer data
+  # TODO:   Use defstruct
+
   def get_categories do
     case File.ls("static/writings") do
       {:ok, categories} ->
@@ -18,6 +21,7 @@ defmodule Taysar.Library do
     categories
   end
   
+  # TODO: filter based on file metadata and keep in memory
   def get_category(category) do
     case File.ls( Path.join([ "static", "writings", category ]) ) do
       {:ok, file_names} ->
@@ -32,6 +36,7 @@ defmodule Taysar.Library do
     category
   end
     
+  # TODO: Make a markdown meta section for use with JSON-LD
   def get_article(category, title) do
     md   = File.read( Path.join([ "static", "writings", category, title <> ".md"   ]) )
     html = File.read( Path.join([ "static", "writings", category, title <> ".html" ]) )

@@ -1,3 +1,4 @@
+Sitemap: https://taysar.com/sitemaps/sitemap.xml
+
 User-agent: *
 Disallow:
-Sitemap: https://taysar.com/sitemaps/sitemap.xml

@@ -35,7 +35,9 @@ defmodule Taysar.Sitemap do
       end
     end
 
-    ping()
+    if Mix.env() == :prod do
+      ping()
+    end 
   end
 
   # git -C static/writings ls-files -z category | xargs -0 -n1 -I{} -- git -C static/writings log -1 --format="%ai {}" {}

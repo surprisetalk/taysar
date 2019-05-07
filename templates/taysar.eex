@@ -12,6 +12,8 @@
       <meta name="description" content="<%= description %>"/>
     <% end %>
 
+    <link rel="canonical" href="https://taysar.com"/>
+
     <link rel="icon" href="https://taysar.com/favicon.ico" type="image/x-icon">
 
     <link href="/css/prism.css" rel="stylesheet"/>
@@ -23,6 +25,166 @@
     <link href="/css/bulma.min.css" rel="stylesheet"/>
 
     <script src="/js/prism.js"></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "name": "A name. I use same as title tag",
+        "url": "http://example.com",
+        "description": "Description. I just use the same description as meta data",
+        "breadcrumb":{
+          "@type":"BreadcrumbList",
+          "itemListElement":[
+            {
+              "@type":"ListItem",
+              "position":"1",
+              "item":{
+                "@type":"WebSite",
+                "@id":"http://example.com",
+                "name":"Home"
+              }
+            },
+            {
+              "@type":"ListItem",
+              "position":"2",
+              "item":{
+                "@type":"WebPage",
+                "@id":"http://example.com/thispage",
+                "name":"Same name from above"
+              }
+            }
+          ]},
+        "mainEntity": {
+          "@type": "Article",
+          "@id": "http://example.com/thispage#ArticleID",
+          "author": "Author Name",
+          "datePublished": "3 September, 2016",
+          "dateModified": "3 September, 2016",
+          "mainEntityOfPage": "http://example.com",
+          "headline": "Headline. H1 of Article",
+          "image": {
+            "@type": "imageObject",
+            "url": "http://example.com/image.png",
+            "height": "500",
+            "width": "300"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Your Name",
+            "logo": {
+              "@type": "imageObject",
+              "url": "http://example.com/logo.png"
+            }
+          }
+        }
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Blog",
+        "name": "Blog name",
+        "url": "https://example.com",
+        "description": "Same as meta description",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Blog Name"
+        },
+        "sameAs": [
+          "https://facebook.com/BlogPage",
+          "https://plus.google/BlogPage"
+        ],
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://example.com/search.php?q={search_term}",
+          "query-input": "required name=search_term"
+        },
+        "blogPosts": [
+          {
+            "@type": "blogPosting",
+            "mainEntityOfPage": "https://example.com/posts/blog-one.html",
+            "headline": "Awesome First Post",
+            "author": "Author Name",
+            "datePublished": "10 May, 2016",
+            "dateModified": "10 May, 2016",
+            "image": {
+              "@type": "imageObject",
+              "url": "https://example.com/image/post-one-thumbnail.jpg",
+              "height": "200",
+              "width": "400"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Blog name",
+              "logo": {
+                "@type": "imageObject",
+                "url": "https://example.com/logo.png"
+              }
+            }
+          },
+          {
+            "@type": "blogPosting",
+            "mainEntityOfPage": "https://example.com/posts/blog-two.html",
+            "headline": "Nice followup post",
+            "author": "Author Name",
+            "datePublished": "14 May, 2016",
+            "dateModified": "14 May, 2016",
+            "image": {
+              "@type": "imageObject",
+              "url": "https://example.com/image/post-two-thumbnail.jpg",
+              "height": "200",
+              "width": "400"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Blog name",
+              "logo": {
+                "@type": "imageObject",
+                "url": "https://example.com/logo.png"
+              }
+            }
+          }
+        ]
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Colorado Springs",
+          "addressRegion": "CO",
+          "postalCode": "80840",
+          "streetAddress": "100 Main Street"
+        },
+        "colleague": [
+          "http://www.example.com/JohnColleague.html",
+          "http://www.example.com/JameColleague.html"
+        ],
+        "email": "mailto:info@example.com",
+        "image": "janedoe.jpg",
+        "jobTitle": "Research Assistant",
+        "name": "Jane Doe",
+        "alumniOf": "Dartmouth",
+        "birthPlace": "Philadelphia, PA",
+        "birthDate": "1979.10.12",
+        "height": "72 inches",
+        "gender": "female",
+        "memberOf": "Republican Party",
+        "nationality": "African American",
+        "telephone": "(123) 456-6789",
+        "url": "http://www.example.com",
+        "sameAs" : [ "https://www.facebook.com/",
+                     "https://www.linkedin.com/",
+                     "http://twitter.com/",
+                     "http://instagram.com/",
+                     "https://plus.google.com/"]
+      }
+    </script>
     
     <style>
       

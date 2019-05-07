@@ -1,0 +1,26 @@
+<div class="column">
+  <h1 style="display:none;">Routine</h1>
+  
+  <!-- TODO: stats -->
+  <!-- TODO: routine descriptions, in DB? -->
+  <form action="/routine?password=<%=password%>" method="POST">
+    <table>
+      <%= for subroutine <- routine do %>
+        <tr>
+          <td><%= subroutine %></td>
+          <td>
+            <input
+              name="<%=subroutine%>"
+              type="checkbox"
+              <%=if password, do: "", else: "disabled"%>
+              <%=if subroutines[subroutine], do: "checked", else: ""%>
+              />
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <%= if password do %>
+      <button type="submit">Submit</button>
+    <% end %>
+  </form>
+</div>
