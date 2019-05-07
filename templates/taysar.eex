@@ -26,6 +26,8 @@
 
     <script src="/js/prism.js"></script>
 
+    <!--
+
     <script type="application/ld+json">
       {
         "@context": "http://schema.org",
@@ -185,6 +187,8 @@
                      "https://plus.google.com/"]
       }
     </script>
+    
+    -->
     
     <style>
       
