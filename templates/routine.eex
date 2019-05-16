@@ -1,26 +1,37 @@
-<div class="column">
-  <h1 style="display:none;">Routine</h1>
-  
-  <!-- TODO: stats -->
-  <!-- TODO: routine descriptions, in DB? -->
-  <form action="/routine?password=<%=password%>" method="POST">
-    <table>
-      <%= for subroutine <- routine do %>
-        <tr>
-          <td><%= subroutine %></td>
-          <td>
-            <input
-              name="<%=subroutine%>"
-              type="checkbox"
-              <%=if password, do: "", else: "disabled"%>
-              <%=if subroutines[subroutine], do: "checked", else: ""%>
-              />
-          </td>
-        </tr>
-      <% end %>
-    </table>
-    <%= if password do %>
-      <button type="submit">Submit</button>
-    <% end %>
-  </form>
+<style>
+  table { max-width: 10rem; }
+  button[type="submit"] { width: 10rem; }
+</style>
+
+<div class="column is-three-fifths-tablet is-three-fifths-desktop is-half-widescreen is-two-fifths-fullhd">
+  <div class="content">
+
+    <h1>Daily Routine</h1>
+
+    <!-- TODO: stats -->
+
+    <!-- TODO: routine descriptions, in DB? -->
+
+    <!-- TODO: move this form to a sticky-right column alongside the body, which gets injected from projects/routine -->
+    <form action="/routine?password=<%=password%>" method="POST">
+        <table class="table is-narrow">
+          <%= for subroutine <- routine do %>
+              <tr>
+              <td>
+                  <input
+                  name="<%=subroutine%>"
+                  type="checkbox"
+                  <%=if password, do: "", else: "disabled"%>
+                  <%=if subroutines[subroutine], do: "checked", else: ""%>
+                  />
+              </td>
+              <td><%= subroutine %></td>
+              </tr>
+          <% end %>
+        </table>
+        <%= if password do %>
+        <button class="button is-link is-outlined" type="submit">Submit</button>
+        <% end %>
+    </form>
+  </div>
 </div>

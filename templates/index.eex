@@ -56,7 +56,7 @@
           <li>hanging out with <a href="http://jander.land/">cool people</a></li>
           <li><a href="/routine">developing a daily routine</a></li>
           <li>watching <a href="https://www.youtube.com/watch?v=z30Y572EmCk&t=7s">anime</a></li>
-          <li><a href="PostgreSQL">mastering PostgreSQL</a></li>
+          <li><a href="/essays/PostgreSQL">mastering PostgreSQL</a></li>
           <li>falling in love</li>
           <li>working at <a href="https://pex.com">Pex</a></li>
           <li><a href="/projects/taysar">making this website</a></li>
@@ -72,38 +72,6 @@
           <!-- <li>watching <a href="https://www.youtube.com/watch?v=1h7rLHNXio8&t=1237s">lectures</a></li> -->
         </ul>
       
-        <!-- <h2>things i like</h2> -->
-      
-        <!-- <h2>things i dislike</h2> -->
-      
-        <!-- <h2>inspirations</h2> -->
-      
-        <!-- <h2>solving problems</h2> -->
-      
-        <!-- <p>I love solving problems! Feel free to <a href="mailto:taylorsarrafian@gmail.com">email me</a> if you're stumped with anything. Or just to say hello.</p> -->
-      
-        <!-- <h2>unpopular opinions</h2> -->
-      
-        <!-- <h2>cool media</h2> -->
-      
-        <!-- <h2>great lectures</h2> -->
-        
-        <!-- <h2>quality memes</h2> -->
-      
-        <!-- <h2>trying to look cool on camera</h2> -->
-      
-        <!-- <img src='/images/stacey.jpg'/> -->
-        <!-- <img src='/images/music.jpg'/> -->
-        <!-- <img src='/images/engineering.jpg'/> -->
-      
-        <!-- <h2></h2> -->
-      
-        <!-- <pre>()</pre> -->
-      
-        <!-- <br/> -->
-      
-        <!-- <hr/> -->
-      
       </div>
     </div>
     <div class="column">
@@ -112,7 +80,9 @@
         <hr class="is-hidden-tablet"/>
         <h2>Soon</h2>
         <ul>
+          <li>updating my personal computing environment</li>
           <li>flash cards</li>
+          <li>updating <a href="/lists">my lists</a></li>
           <li>building an app </a> with <a href="http://elixir-lang.org/">elixir</a> and <a href="http://elm-lang.org/">elm</a></li>
           <li>playing with plants</li>
           <li>inventing notations and programming languages</li>
