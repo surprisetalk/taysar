@@ -21,7 +21,7 @@ defmodule Taysar.Sitemap do
         changefreq: "weekly",
         lastmod: lastmod(".", "templates/index.eex")
       for category <- File.ls!("static/writings"),
-        not String.starts_with?(category, ".") do
+        not String.contains?(category, ".") do
           add Path.join("/", category),
             priority: 0.3,
             changefreq: "weekly",
