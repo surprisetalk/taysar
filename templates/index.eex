@@ -61,7 +61,6 @@
           <li>working at <a href="https://pex.com">Pex</a></li>
           <li><a href="/projects/taysar">making this website</a></li>
           <li>helping friends with projects</li>
-          <li>researching information & complexity</li>
           <!-- <li>making websites</a> with <a href="http://elixir-lang.org/">elixir</a> and <a href="http://elm-lang.org/">elm</a></li> -->
           <!-- <li>stuyding <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">entropy</a> &amp; <a href="https://en.wikipedia.org/wiki/Computational_complexity_theory">complexity</a></li> -->
           <!-- <li>listening to <a href="https://stownpodcast.org/">podcasts</a></li> -->
@@ -84,7 +83,8 @@
           <li><a href="/projects/My Personal Computing Environment.md">updating my personal computing environment</a></li>
           <li><a href="/projects/Flash">flash</a> cards</li>
           <li>updating <a href="/lists">my lists</a></li>
-          <li>building an app </a> with <a href="http://elixir-lang.org/">elixir</a> and <a href="http://elm-lang.org/">elm</a></li>
+          <li>building an app with <a href="http://elixir-lang.org/">elixir</a> and <a href="http://elm-lang.org/">elm</a></li>
+          <li>researching information &amp; complexity</li>
           <li>playing with <a href="/projects/Gardening">plants</a></li>
           <li>inventing notations and programming languages</li>
           <!-- <li><a href="/projects/ScrapScript">making a metaprogramming language</a></li> -->
@@ -92,7 +92,6 @@
           <!-- <li><a href="/projects/SewerScript">piping things together</a></li> -->
           <!-- <li><a href="/projects/Flash">playing with flash-cards</a></li> -->
           <!-- <li><a href="/projects/Chirp">ruining music notation</a></li> -->
-          <li></li>
         </ul>
     
       </div>
