@@ -47,7 +47,7 @@ defmodule Taysar.Router do
     end
   end
 
-  EEx.function_from_file :defp, :template_routine, "templates/routine.eex", [:password,:routine,:subroutines]
+  EEx.function_from_file :defp, :template_routine, "templates/routine.eex", [:password,:body,:routine,:subroutines]
   get "/routine" do
     case get_categories() do
       {:ok, categories} ->
@@ -91,6 +91,7 @@ defmodule Taysar.Router do
           categories,
           template_routine(
             password == System.get_env("TS_PASSWORD") && password,
+            Taysar.Library.get_article!("","Daily Routine"),
             Taysar.Routine.routine,
             subroutines
           )

@@ -81,11 +81,11 @@
         <hr class="is-hidden-tablet"/>
         <h2>Soon</h2>
         <ul>
-          <li>updating my personal computing environment</li>
-          <li>flash cards</li>
+          <li><a href="/projects/My Personal Computing Environment.md">updating my personal computing environment</a></li>
+          <li><a href="/projects/Flash">flash</a> cards</li>
           <li>updating <a href="/lists">my lists</a></li>
           <li>building an app </a> with <a href="http://elixir-lang.org/">elixir</a> and <a href="http://elm-lang.org/">elm</a></li>
-          <li>playing with plants</li>
+          <li>playing with <a href="/projects/Gardening">plants</a></li>
           <li>inventing notations and programming languages</li>
           <!-- <li><a href="/projects/ScrapScript">making a metaprogramming language</a></li> -->
           <!-- <li><a href="/projects/Quack">improving mathematics notation</a></li> -->

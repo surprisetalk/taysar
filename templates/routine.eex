@@ -1,12 +1,19 @@
 <style>
-  table { max-width: 10rem; }
+  #today table { max-width: 10rem; }
   button[type="submit"] { width: 10rem; }
 </style>
 
-<div class="column is-three-fifths-tablet is-three-fifths-desktop is-half-widescreen is-two-fifths-fullhd">
+<div class="column is-hidden-mobile is-three-fifths-desktop is-half-widescreen is-two-fifths-fullhd">
   <div class="content">
+    <%= body %>
+  </div>
+</div>
 
-    <h1>Daily Routine</h1>
+<div id="today" class="column is-narrow">
+  <div class="content">
+  <!-- <div style="position: sticky; top: 48px;" class="content"> -->
+
+    <h2>Today</h2>
 
     <!-- TODO: stats -->
 
@@ -35,3 +42,4 @@
     </form>
   </div>
 </div>
+

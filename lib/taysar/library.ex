@@ -10,7 +10,7 @@ defmodule Taysar.Library do
   def get_categories do
     case File.ls("static/writings") do
       {:ok, categories} ->
-        {:ok, Enum.filter(categories, fn str -> not String.starts_with?(str, ".") end)}
+        {:ok, Enum.filter(categories, fn str -> not String.contains?(str, ".") end)}
       {:error, reason} ->
         {:error, reason}
     end
@@ -47,6 +47,11 @@ defmodule Taysar.Library do
       {{:error, reason}, _} -> {:error, reason}
       {_, {:error, reason}} -> {:error, reason}
     end
+  end
+
+  def get_article!(category, title) do
+    {:ok, article} = get_article(category, title)
+    article
   end
 
 end
