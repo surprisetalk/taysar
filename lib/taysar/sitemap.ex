@@ -14,6 +14,7 @@ defmodule Taysar.Sitemap do
     Task.start_link(&generate_sitemap/0)
   end
 
+  # BUG: missing /routine
   def generate_sitemap() do
     create do
       add "",
