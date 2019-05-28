@@ -53,14 +53,13 @@
         <h2>Current</h2>
         <ul>
           <li><a href="/projects/Taylor Sarrafian">"improving" myself</a></li>
-          <li>hanging out with <a href="http://jander.land/">cool people</a></li>
           <li><a href="/routine">developing a daily routine</a></li>
-          <li>watching <a href="https://www.youtube.com/watch?v=z30Y572EmCk&t=7s">anime</a></li>
-          <li><a href="/essays/PostgreSQL">mastering PostgreSQL</a></li>
-          <li>falling in love</li>
           <li>working at <a href="https://pex.com">Pex</a></li>
-          <li><a href="/projects/taysar">making this website</a></li>
+          <li>hanging out with <a href="http://jander.land/">cool people</a></li>
           <li>helping friends with projects</li>
+          <li><a href="/essays/PostgreSQL">mastering PostgreSQL</a></li>
+          <li><a href="/projects/taysar">making this website</a></li>
+          <li>watching <a href="https://www.youtube.com/watch?v=z30Y572EmCk&t=7s">anime</a></li>
           <!-- <li>making websites</a> with <a href="http://elixir-lang.org/">elixir</a> and <a href="http://elm-lang.org/">elm</a></li> -->
           <!-- <li>stuyding <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">entropy</a> &amp; <a href="https://en.wikipedia.org/wiki/Computational_complexity_theory">complexity</a></li> -->
           <!-- <li>listening to <a href="https://stownpodcast.org/">podcasts</a></li> -->
@@ -80,6 +79,7 @@
         <hr class="is-hidden-tablet"/>
         <h2>Soon</h2>
         <ul>
+          <li><a href="/essays/Stocks for Nerds.md">stocks</a></li>
           <li><a href="/projects/My Personal Computing Environment.md">updating my personal computing environment</a></li>
           <li><a href="/projects/Flash">flash</a> cards</li>
           <li>updating <a href="/lists">my lists</a></li>
