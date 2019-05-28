@@ -79,8 +79,7 @@
         <hr class="is-hidden-tablet"/>
         <h2>Soon</h2>
         <ul>
-          <li><a href="/essays/Stocks for Nerds.md">stocks</a></li>
-          <li><a href="/projects/My Personal Computing Environment.md">updating my personal computing environment</a></li>
+          <li><a href="/projects/My Personal Computing Environment">updating my personal computing environment</a></li>
           <li><a href="/projects/Flash">flash</a> cards</li>
           <li>updating <a href="/lists">my lists</a></li>
           <li>building an app with <a href="http://elixir-lang.org/">elixir</a> and <a href="http://elm-lang.org/">elm</a></li>
@@ -88,6 +87,7 @@
           <li>playing with <a href="/projects/Gardening">plants</a></li>
           <li>inventing notations and programming languages</li>
           <li>performing arts</li>
+          <li><a href="/essays/Stocks for Nerds">stocks</a></li>
           <!-- <li><a href="/projects/ScrapScript">making a metaprogramming language</a></li> -->
           <!-- <li><a href="/projects/Quack">improving mathematics notation</a></li> -->
           <!-- <li><a href="/projects/SewerScript">piping things together</a></li> -->
