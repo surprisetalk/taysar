@@ -1,6 +1,8 @@
 # Taysar
 
-**TODO: Add description**
+```bash
+TS_PASSWORD=hunter2 DATABASE_URL="postgresql://username:password@host:port/db" iex -S mix
+```
 
 ## Installation
 

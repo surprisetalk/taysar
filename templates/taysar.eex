@@ -283,6 +283,11 @@
         list-style : circle;
       }
 
+      .content li input[type="checkbox"]
+      {
+        margin: 3px 4px 3px;
+      }
+
       .content iframe {
         background-color: #FFF;
         animation-name: loading-background-color;
