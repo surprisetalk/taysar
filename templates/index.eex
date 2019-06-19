@@ -29,6 +29,7 @@
         <hr class="is-hidden-tablet"/>
         <h2>Recent</h2>
         <ul>
+          <li><a href="/essays/Synthetic Intelligence">synthetic intelligence</a></li>
           <li><a href="/stories/Blood & Brain | Heart & Helix">blood & brain | heart & helix</a></li>
           <li><a href="/essays/An Algorithm for Generating Ideas">an algorithm for generating ideas</a></li>
           <li><a href="/essays/Don't Feel Your Feelings">don't feel your feelings</a></li>
